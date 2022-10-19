@@ -9,20 +9,21 @@ function photographerFactory(data) {
         img.setAttribute("src", picture)   /*Définit la valeur d'un attribut sur l'élément spécifié. Si l'attribut existe déjà, la valeur est mise à jour ; sinon, un nouvel attribut est ajouté avec le nom et la valeur spécifiés. */
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
-        const town = document.createElement( 'p' );
-        town.textContent = city;
-        const pays = document.createElement( 'p' );
-        pays.textContent = city+', '+country;
+       
+        const pays = document.createElement( 'p' ); 
+        pays.classList.add("pays");
+        pays.textContent = city +', '+ country;  
         const status = document.createElement( 'p' );
+        status.classList.add("tagline");
         status.textContent = tagline;
         const tarif = document.createElement( 'p' );
-        tarif.textContent = price;
+        tarif.classList.add("tarif");
+        tarif.textContent = price + "€/jour";
         article.appendChild(img); /*appendchild va générer des données*/
         article.appendChild(h2);
-        article.appendChild(town);
         article.appendChild(pays);
-        article.appendChild(tarif);
         article.appendChild(status);
+        article.appendChild(tarif);
         return (article);
     }
     return { getUserCardDOM }
