@@ -42,8 +42,8 @@
     cursor: pointer;
 }
 
-.modal header h2 {
-    font-size: 64px;
+.modal header h1 {
+    font-size: 45px;
     font-weight: normal;
     text-align: center;
 }
@@ -68,9 +68,13 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+form  input, .message {
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+form .message{
+    height: 150px;
 }
