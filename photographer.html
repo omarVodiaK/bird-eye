@@ -16,6 +16,7 @@
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
     </main>
+
     <div id="contact_modal">
 			<div class="modal">
 				<header>
@@ -26,20 +27,25 @@
 					<div >
 						<label for="firstname">Prénom</label>
 						<input id="firstname" for="name" type="firstname" />
+            <p id="firstNameError"></p>
 					</div>
           <div >
 						<label for="lastname">Nom</label>
 						<input id="lastname" for="name" type="lastname" />
+            <p id="lastNameError"></p>
+
 					</div>
           <div> 
 						<label for="email">Email</label>
 						<input id="email" for="email" type="email" />
+            <p id="emailError"></p>
 					</div>
           <div>
 						<label for="message">Votre message</label>
 						<input id="message" class="message" name="textarea" type="your message"></input>
+            <p id="messageError"></p>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" type="submit">Envoyer</button>
 				</form>
 			</div>
 		</div>
