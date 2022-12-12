@@ -15,6 +15,7 @@
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+
     </main>
 
     <div id="contact_modal">
@@ -33,7 +34,6 @@
 						<label for="lastname">Nom</label>
 						<input id="lastname" for="name" type="lastname" />
             <p id="lastNameError"></p>
-
 					</div>
           <div> 
 						<label for="email">Email</label>
@@ -49,8 +49,11 @@
 				</form>
 			</div>
 		</div>
-    <script type="text/javascript" src="scripts/pages/photographer.js"></script>
+    <div class="photograph-media"></div>
+    
+    <script type="text/javascript" src="scripts/pages/photographerPage.js"></script>
     <script type="text/javascript" src="scripts/utils/contactForm.js"></script>
+    <script type="text/javascript" src="scripts/factories/media.js"></script>
 
   </body>
 </html>

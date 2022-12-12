@@ -1,16 +1,16 @@
 function photographerFactory(data) {
-  const { id,name, portrait, price, city, country, tagline } = data;
+  const { id, name, portrait, price, city, country, tagline } = data;
 
   const picture = `assets/photographers/Photographers_Photos/${portrait}`;
 
   function getUserCardDOM() {
     const article = document.createElement("article");
     article.innerHTML = `
-   <a href="./././photographer.html?${id}"> 
+   <a href="./././photographer.html?id=${id}&name=${name}"> 
    <img src="${picture}">
    <h2>${name}</h2>
    </a>   
-   <p class="pays">${city + ", " + country}</p>
+   <p class="pays">${city + ", " + country}</p >
    <p class="tagline"> ${tagline}</p>
    <p class="tarif"> ${price} €/jour</p>
   
