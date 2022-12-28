@@ -50,11 +50,27 @@
 				</form>
 			</div>
 		</div>
+
+    <div id="image-slide-show">
+      <div class="modal">
+        <header>
+              <h2>Image Slide Show</h2>
+              <button id="closeImageSlideShow">  <img src="assets/icons/close.svg"></button>
+        </header>
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+        
+      </div>
+      
+    </div>
     <div class="photograph-media"></div>
+
+    
     
     <script type="text/javascript" src="scripts/pages/photographerPage.js"></script>
     <script type="text/javascript" src="scripts/utils/contactForm.js"></script>
     <script type="text/javascript" src="scripts/factories/media.js"></script>
+    <script type="text/javascript" src="scripts/utils/imageSlideShow.js"></script>
 
   </body>
 </html>
