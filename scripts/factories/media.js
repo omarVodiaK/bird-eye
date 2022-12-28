@@ -10,29 +10,25 @@ class MediaFactory {
   }
 }
 
+
+
 class Image {
   constructor(data, photographerName) {
-    this.title = data.title;
     this.photographerName = photographerName;
+    this.data = data;
   }
   afficherMedia() {
     const article = document.createElement("article");
     article.innerHTML = `
-   <h2>image ${this.title}</h2>
+   <h2>image ${this.data.title}</h2>
        `;
-    return article;
+const mediaImage = document.createElement("img");
+mediaImage.src = "./assets/" + this.photographerName + "/" + this.data.image;
+mediaImage.alt = this.data.title;
+article.appendChild(mediaImage);
+       return article;
   }
-      createMedia() {
-        return `
-                <a class="photograph-media-link" href="#" role="button" tabindex="0" onclick="displayLightbox(${this._id}, '${this._photographerName}', '${this._media}', '${this._title}'); return false">
-                    <img id=${this._id} class="photograph-media-content" src='../assets/photographers/${this._photographerName}/${this._media}' alt= '${this._title}'>
-                    </img>
-                </a>
-                <div class="photograpgh-media-infos">
-                    <p>${this._title}</p> 
-                    <p class="likes"><span class="likes-number ${this._id}" tabindex="0">${this._likes}</span> <a aria-label="like button" href ="#" role="button" tabindex="0" onclick="addOneLike(${this._id}, ${this._likes}); return false"><em class="fas fa-heart"></em></a></p>
-                </div>;`
-    }
+
 }
 
 class Video {
@@ -47,102 +43,73 @@ class Video {
 
     `;
     return article;
+    
   }
+
 }
 
-/*const  searchParams = new URLSearchParams(location.search)
-const photographerId = +searchParams.get('id')
-let photographer
-let medias
-const lightbox = document.getElementById('media_modal')
+// Création d'une balise img
+const myImage = document.createElement('img')
 
-const main = document.querySelector('main')
-const header = document.querySelector('header')
-const orderSelect = document.querySelector('#orderSelect')
-const photograph_medias = document.querySelector('#photograph_medias')
-const likes = []
+// Initialisation de la variable qui contiendra le nom du dossier
+let imageSrc = photgraphers.name
 
-//API fetch
-;(async () => {
-    try {
-        const response = await fetch('./data/photographers.json')
-		const data = await response.json()
+// Nettoyage du nom : on vire le dernier espace et tout ce qu'il y a après
+const lastIndex = imageSrc.lastIndexOf(" ");
+imageSrc = imageSrc.substring(0, lastIndex);
 
-        photographer = data.photographers.find((photographer) => photographer.id === photographerId)
-		medias = data.media.filter((media) => media.photographerId === photographerId)
-		photograph_medias.style.gridTemplateRows = 'repeat(' + Math.ceil(medias.length / 3) + ', 400px)'
+// Option : remplace le tiret dans le nom du dossier par un espace
+//imageSrc = imageSrc.replaceAll('-', ' ')
 
-        photographerHeader(photographer)
-		likesPrice(medias, photographer.price)
-		orderMedias(photographer)
-		addEventListener('keydown', (e) => {
-			if (lightbox.style.display && lightbox.style.display !== 'none') {
-				if (e.code === 'ArrowLeft') {
-					return changeMedia('left')
-				}
-				if (e.code === 'ArrowRight') {
-					return changeMedia('right')
-				}
-				if (e.code === 'Escape') {
-					return closeMediaModal()
-				}
-			}
-		})
-		orderSelect.onchange = ({target: {value}}) => orderMedias(photographer, value)
+// Ajout du nom de l'image
+imageSrc += '/' + media.src
 
-		const contactTitle = document.querySelector('#contact_modal h2')
-		contactTitle.textContent += ' ' + photographer.name
-    }catch (error) {
-        console.error(error)
-        const errorElement = document.createElement('h2')
-        errorElement.classList.add('photographers_error')
-        errorElement.textContent = "Une erreur est survenue."
-        main.appendChild(errorElement)
-    }
-})()
-//fin de API fetch
+//  On renseigne l'attribut src de l'image
+myImage.src = imageSrc
 
-//photographer informations
-function photographerHeader(photographer) {
-	const { name, city, country, tagline, portrait } = photographer
-	const nameElement = document.querySelector('.photograph_infos > h1')
-	const locationElement = document.querySelector('.photograph_infos > p:nth-child(2)')
-	const taglineElement = document.querySelector('.photograph_infos > p:last-child')
+// On ajoute l'image à la page web
+const rootElt = document.getElementById('medias')
+rootElt.appendChild(myImage)
 
-	nameElement.textContent = name
-	locationElement.textContent = city + ', ' + country
-	taglineElement.textContent = tagline
+/*data.foEeach(photographer => { })
+photographer.name.substring(0, photographer.name.lastIndexOf(' ')).replaceAll('-', ' ');
 
-	const header = document.querySelector('.photograph-header')
-	const image = document.createElement('img')
 
-	image.src = `./assets/photographers/${portrait}`
-	image.alt = photographer.name
+/*récupération du preom 3e essaie 
+let str = photographers.json.name;
+let lastIndex = str.lastIndexOf("");
+str = str.substring(0, lastIndex);
+str.replaceAll('-', ' ');
 
-	header.appendChild(image)
+*/
+
+/*récupération du prénom 2e essaie
+name.split(' '); 
+name.split(' ').slice(0, -1).join(' '); 
+var firstName = name.split(' ').slice(0, -1).join(' ');
+
+
+/*récupération du prénom 1er essaie 
+let recupName={
+  "userId": 1,
+  "firstName": "firstname",
 }
-//fin de photographer informations
+recupName.firstName;
+
+*/
 
 
 
 
 
 
-/*
-  class TvShow {
-    constructor(name, ) {
-        this._title = title
-  
-    }
-  }
-  
-  // Ici j'instancie quelques classes de films
-  const PredatorMovie = new Movie("Predator", 1987, 107)
-  const TerminatorMovie = new Movie("Terminator", 1984, 107)
-  const AlienMovie = new Movie("Alien", 1979, 117)
-  
-  // Ici j'instancie quelques séries
-  const FriendsTvShow = new TvShow("Friends", 23, 10)
-  const ScrubsTvShow = new TvShow("Scrubs", 20, 9)
-  const CougarTownTvShow = new TvShow("Cougar Town", 13, 5)
-  */
+
+
+
+
+
+
+
+
+
+
